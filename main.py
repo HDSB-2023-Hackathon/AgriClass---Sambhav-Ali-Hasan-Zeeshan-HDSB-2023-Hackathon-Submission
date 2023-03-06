@@ -1,4 +1,3 @@
-# Define a function to prompt the user for seed characteristics
 def get_seed_characteristics():
     # Prompt user for seed length and width
     while True:
@@ -26,9 +25,16 @@ def identify_seed_type(seed):
                       "color": (lambda x: x == "white"), "shape": (lambda x: x == "round")}
     watermelon_indicators = {"length": (lambda x: x > 3), "width": (lambda x: x < 1),
                              "color": (lambda x: x == "black"), "shape": (lambda x: x == "teardrop")}
-
+    pumpkin_indicators = {"length": (lambda x: x > 10), "width": (lambda x: x > 10),
+                          "color": (lambda x: x == "orange"), "shape": (lambda x: x == "round")}
+    sunflower_indicators = {"length": (lambda x: x > 15), "width": (lambda x: x > 15),
+                            "color": (lambda x: x == "black"), "shape": (lambda x: x == "disc")}
+    tomato_indicators = {"length": (lambda x: x > 5), "width": (lambda x: x > 5),
+                         "color": (lambda x: x == "red"), "shape": (lambda x: x == "round")}
     # Check if the seed matches the indicators for each seed type
-    for seed_type, indicators in {"bean": bean_indicators, "pea": pea_indicators, "watermelon": watermelon_indicators}.items():
+    seed_types = {"bean": bean_indicators, "pea": pea_indicators, "watermelon": watermelon_indicators,
+                  "pumpkin": pumpkin_indicators, "sunflower": sunflower_indicators, "tomato": tomato_indicators}
+    for seed_type, indicators in seed_types.items():
         if all(indicators[characteristic](seed[characteristic]) for characteristic in seed):
             return seed_type
 
