@@ -9,15 +9,15 @@ When prompted, enter the length and width of the seed in millimeters.
 Enter the color and shape of the seed.
 The program will identify the type of seed based on the entered characteristics and output the result.
 You can choose to identify another seed or exit the program.
-Functions
 
+##Functions
 The program has two functions:
 
 get_seed_characteristics() - This function prompts the user for the seed characteristics and returns a dictionary containing the seed characteristics.
 
 identify_seed_type(seed) - This function takes in a dictionary of seed characteristics and identifies the type of seed based on those characteristics. It uses a set of indicators for each seed type and checks if the seed matches those indicators.
 
-Seed Types
+##Seed Types
 The program can identify three types of seeds: beans, peas, and watermelons. The characteristics for each seed type are as follows:
 
 1. Bean
