@@ -19,21 +19,33 @@ def get_seed_characteristics():
 # Define a function to identify the type of seed based on its characteristics
 def identify_seed_type(seed):
     # Define indicators for each seed type
-    bean_indicators = {"length": (lambda x: x > 5), "width": (lambda x: x > 2),
+    bean_indicators = {"length": (lambda x: 5 < x < 15), "width": (lambda x: 2 < x < 10),
                        "color": (lambda x: x == "brown"), "shape": (lambda x: x == "oval")}
-    pea_indicators = {"length": (lambda x: x < 3), "width": (lambda x: x < 1),
-                      "color": (lambda x: x == "white"), "shape": (lambda x: x == "round")}
-    watermelon_indicators = {"length": (lambda x: x > 3), "width": (lambda x: x < 1),
-                             "color": (lambda x: x == "black"), "shape": (lambda x: x == "teardrop")}
-    pumpkin_indicators = {"length": (lambda x: x > 10), "width": (lambda x: x > 10),
+    pea_indicators = {"length": (lambda x: 2 < x < 8), "width": (lambda x: 1 < x < 5),
+                      "color": (lambda x: x == "green"), "shape": (lambda x: x == "round")}
+    watermelon_indicators = {"length": (lambda x: 10 < x < 25), "width": (lambda x: 5 < x < 15),
+                             "color": (lambda x: x == "green"), "shape": (lambda x: x == "oblong")}
+    pumpkin_indicators = {"length": (lambda x: 15 < x < 30), "width": (lambda x: 15 < x < 30),
                           "color": (lambda x: x == "orange"), "shape": (lambda x: x == "round")}
-    sunflower_indicators = {"length": (lambda x: x > 15), "width": (lambda x: x > 15),
-                            "color": (lambda x: x == "black"), "shape": (lambda x: x == "disc")}
-    tomato_indicators = {"length": (lambda x: x > 5), "width": (lambda x: x > 5),
+    sunflower_indicators = {"length": (lambda x: 10 < x < 30), "width": (lambda x: 10 < x < 30),
+                            "color": (lambda x: x == "brown"), "shape": (lambda x: x == "disc")}
+    tomato_indicators = {"length": (lambda x: 10 < x < 30), "width": (lambda x: 10 < x < 30),
                          "color": (lambda x: x == "red"), "shape": (lambda x: x == "round")}
+    soybean_indicators = {"length": (lambda x: 5 < x < 15), "width": (lambda x: 2 < x < 10),
+                          "color": (lambda x: x == "yellow"), "shape": (lambda x: x == "elliptical")}
+    rice_indicators = {"length": (lambda x: 10 < x < 30), "width": (lambda x: 1 < x < 5),
+                       "color": (lambda x: x == "white"), "shape": (lambda x: x == "long and narrow")}
+    corn_indicators = {"length": (lambda x: 10 < x < 30), "width": (lambda x: 2 < x < 10),
+                       "color": (lambda x: x == "yellow"), "shape": (lambda x: x == "oblong")}
+    barley_indicators = {"length": (lambda x: 5 < x < 15), "width": (lambda x: 1 < x < 5),
+                         "color": (lambda x: x == "golden"), "shape": (lambda x: x == "pear-shaped")}
+    
     # Check if the seed matches the indicators for each seed type
     seed_types = {"bean": bean_indicators, "pea": pea_indicators, "watermelon": watermelon_indicators,
-                  "pumpkin": pumpkin_indicators, "sunflower": sunflower_indicators, "tomato": tomato_indicators}
+                  "pumpkin": pumpkin_indicators, "sunflower": sunflower_indicators, "tomato": tomato_indicators,
+                  "soybean": soybean_indicators, "rice": rice_indicators, "corn": corn_indicators,
+                  "barley": barley_indicators}
+    
     for seed_type, indicators in seed_types.items():
         if all(indicators[characteristic](seed[characteristic]) for characteristic in seed):
             return seed_type
